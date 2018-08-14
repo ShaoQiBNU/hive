@@ -56,3 +56,26 @@ select json_tuple(data,'owner','email') from test;
 amy amy@only_for_json_udf_test.net
 
 ```
+
+# 二. 条件判断
+
+> hive中if语句语法格式如下：
+
+```
+
+语法: if(boolean testCondition, T valueTrue, T valueFalseOrNull)
+返回值: T
+
+说明:  当条件testCondition为TRUE时，返回valueTrue；否则返回valueFalseOrNull
+
+举例：
+hive> select if(1=2,100,200) from dual;
+
+200
+
+
+hive> select if(1=1,100,200) from dual;
+
+100
+
+```
