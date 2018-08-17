@@ -57,7 +57,41 @@ amy amy@only_for_json_udf_test.net
 
 ```
 
-# 二. 条件判断
+# 二. reflect
+> reflect函数可以支持在sql中调用java中的自带函数，秒杀一切udf函数。使用案例如下——所有记录执行相同的java内置函数
+
+```sql
+hive中建一张表test_udf:column1(int),column2(int), 表中数据如下：
+
+1,2
+
+2,3
+
+3,4
+
+4,5
+
+5,6
+
+
+select reflect("java.lang.Math","max",column1,column2) from test_udf
+
+结果：
+
+2
+
+3
+
+4
+
+5
+
+6
+
+select 语句的第一个参数为java依赖包，第二个参数为函数功能，第三个参数为目标对象，可以是某个具体的值，也可以是表中的字段。
+
+```
+# 三. 条件判断
 
 > hive中if语句语法格式如下：
 
